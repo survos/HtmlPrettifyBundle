@@ -5,7 +5,7 @@
   "version": "1.0.1",
   "symfony": {
     "controllers": {
-      "hello": {
+      "prettify": {
         "main": "src/controllers/prettify_controller.js",
         "webpackMode": "eager",
         "fetch": "eager",

@@ -4,6 +4,7 @@ namespace Tacman\HtmlPrettifyBundle\Twig;
 
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
+use Twig\Markup;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension;
@@ -21,8 +22,9 @@ class HtmlPrettifyExtension extends AbstractExtension
         ];
     }
 
-    public function renderHello(Environment $env, array $attributes = []): string
+    public function make_pretty(Environment $env, Markup $markup, array $attributes = []): string
     {
+        dd($markup);
 
         $controllers = [];
         $controllers['@tacman/html-prettify-bundle/prettify'] = $attributes;
