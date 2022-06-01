@@ -1,0 +1,25 @@
+{
+  "name": "@tacman/html-prettify-bundle",
+  "description": "Make HTML pretty",
+  "license": "MIT",
+  "version": "1.0.1",
+  "symfony": {
+    "controllers": {
+      "hello": {
+        "main": "src/controllers/prettify_controller.js",
+        "webpackMode": "eager",
+        "fetch": "eager",
+        "enabled": true
+      }
+    }
+  },
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.0.0"
+  },
+  "devDependencies": {
+    "@hotwired/stimulus": "^3.0.0"
+  },
+  "dependencies": {
+    "html-prettify": "^1.0.7"
+  }
+}
