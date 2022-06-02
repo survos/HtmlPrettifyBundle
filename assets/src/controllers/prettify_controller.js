@@ -7,7 +7,7 @@ const prettify = require('html-prettify');
 */
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
-    static targets = ['source']
+    static targets = ['source', 'pretty']
     static values = {
         duration: {type: Number, default: 2000},
         title: {type: String, default: 'Hola' }
@@ -15,14 +15,15 @@ export default class extends Controller {
 
     connect() {
         let msg = 'Hello from @tacman/html-prettify: ' + this.identifier;
-        composer.log(msg);
-        this.prettify(this.sourceTarget.innerHTML);
+        let html = this.hasSourceTarget ? this.sourceTarget.innerHTML : this.element.innerHTML;
+        this.sourceTarget.innerHTML = "\n" + prettify(html) + "\n";
+
+        // console.log(html);
+        // let pretty = prettify(html);
+        // console.log(pretty);
+        // this.prettyTarget.innerHTML = pretty;
     }
 
-    prettify(source) {
-        console.log(source);
-
-    }
 
     // ...
 }

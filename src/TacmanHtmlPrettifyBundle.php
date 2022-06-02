@@ -2,6 +2,7 @@
 
 namespace Tacman\HtmlPrettifyBundle;
 
+use Gajus\Dindent\Indenter;
 use Gedmo\Mapping\Annotation\Tree;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
@@ -27,13 +28,16 @@ class TacmanHtmlPrettifyBundle extends AbstractBundle
      */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
+        $builder->autowire('gajus_indenter', Indenter::class)
+            ->setPublic(true);
 //        $definition = $builder->autowire('tacman.hello_twig', HelloExtension::class)
 //            ->addTag('twig.extension');
 
         if (class_exists(Environment::class) && class_exists(StimulusTwigExtension::class)) {
             $builder
-                ->setDefinition('tacman.hello_twig', new Definition(HtmlPrettifyExtension::class))
-                ->addArgument(new Reference('webpack_encore.twig_stimulus_extension'))
+                ->setDefinition('tacman.html_pretty', new Definition(HtmlPrettifyExtension::class))
+//                ->addArgument(new Reference('webpack_encore.twig_stimulus_extension'))
+//                ->addArgument(new Reference('gajus_indenter'))
                 ->addTag('twig.extension')
                 ->setPublic(false)
             ;

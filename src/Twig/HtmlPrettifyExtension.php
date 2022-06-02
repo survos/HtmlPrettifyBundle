@@ -2,6 +2,8 @@
 
 namespace Tacman\HtmlPrettifyBundle\Twig;
 
+use Gajus\Dindent\Indenter;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\Markup;
@@ -11,9 +13,17 @@ use Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension;
 
 class HtmlPrettifyExtension extends AbstractExtension
 {
-    public function __construct(private StimulusTwigExtension $stimulus)
+//    public function __construct(private Indenter $indenter)
+//    {
+//    }
+
+    public function getFilters(): array
     {
+        return [
+             new TwigFilter('prettify', [$this, 'make_pretty'], ['needs_environment' => true, 'is_safe' => ['html']]),
+        ];
     }
+
 
     public function getFunctions(): array
     {
@@ -22,27 +32,16 @@ class HtmlPrettifyExtension extends AbstractExtension
         ];
     }
 
-    public function make_pretty(Environment $env, Markup $markup, array $attributes = []): string
+    public function make_pretty(Environment $env, string $markup, array $attributes = []): string
     {
-        dd($markup);
-
-        $controllers = [];
-        $controllers['@tacman/html-prettify-bundle/prettify'] = $attributes;
-
-        $html = '<div '.$this->stimulus->renderStimulusController($env, $controllers).' ';
-//        foreach ($attributes as $name => $value) {
-//            if ('data-controller' === $name) {
-//                continue;
-//            }
-//
-//            if (true === $value) {
-//                $html .= $name.'="'.$name.'" ';
-//            } elseif (false !== $value) {
-//                $html .= $name.'="'.$value.'" ';
-//            }
-//        }
-
-        return trim($html).'></div>';
+        $options = (new OptionsResolver())
+            ->setDefaults([
+                'msg' => 'prettify'
+            ])->resolve($attributes);
+        $msg = $options['msg'];
+        $in = new Indenter();
+        $pretty = sprintf("\n<!-- %s -->\n%s\n<!-- end of %s -->\n", $msg, $in->indent($markup), $msg);
+        return $pretty;
     }
 
 }
