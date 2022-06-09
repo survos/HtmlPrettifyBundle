@@ -4,8 +4,6 @@ namespace Survos\HtmlPrettifyBundle;
 
 use Gajus\Dindent\Indenter;
 use Symfony\Component\DependencyInjection\Definition;
-use Symfony\Component\DependencyInjection\Reference;
-use Symfony\UX\Chartjs\Twig\ChartExtension;
 use Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -31,15 +29,13 @@ class HtmlPrettifyBundle extends AbstractBundle
 //        $definition = $builder->autowire('tacman.hello_twig', HelloExtension::class)
 //            ->addTag('twig.extension');
 
-        if (class_exists(Environment::class) && class_exists(StimulusTwigExtension::class)) {
             $builder
-                ->setDefinition('tacman.html_pretty', new Definition(HtmlPrettifyExtension::class))
+                ->setDefinition('survos.html_pretty', new Definition(HtmlPrettifyExtension::class))
 //                ->addArgument(new Reference('webpack_encore.twig_stimulus_extension'))
 //                ->addArgument(new Reference('gajus_indenter'))
                 ->addTag('twig.extension')
                 ->setPublic(false)
             ;
-        }
 
 //        $definition->setArgument('$widthFactor', $config['widthFactor']);
 //        $definition->setArgument('$height', $config['height']);
