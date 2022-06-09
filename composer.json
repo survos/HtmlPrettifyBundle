@@ -1,5 +1,5 @@
 {
-    "name": "tacman/html-prettify-bundle",
+    "name": "survos/html-prettify-bundle",
     "description": "format HTML",
     "keywords": ["symfony-ux", "symfony6"],
 
@@ -21,10 +21,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Tacman\\HtmlPrettifyBundle\\": "src/"
+            "Survos\\HtmlPrettifyBundle\\": "src/"
         }
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "phpstan/phpstan": "^1.7",
         "symfony/browser-kit": "^6.1",
         "symfony/framework-bundle": "^6.1",
