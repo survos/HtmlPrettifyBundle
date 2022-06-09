@@ -1,23 +1,21 @@
 <?php
 
-namespace Tacman\HtmlPrettifyBundle;
+namespace Survos\HtmlPrettifyBundle;
 
 use Gajus\Dindent\Indenter;
-use Gedmo\Mapping\Annotation\Tree;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\UX\Chartjs\Twig\ChartExtension;
 use Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension;
-use Tacman\HtmlPrettifyBundle\Twig\HelloExtension;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Tacman\HtmlPrettifyBundle\Twig\HtmlPrettifyExtension;
+use Survos\HtmlPrettifyBundle\Twig\HtmlPrettifyExtension;
 use Twig\Environment;
 
-class TacmanHtmlPrettifyBundle extends AbstractBundle
+class HtmlPrettifyBundle extends AbstractBundle
 {
 
     protected string $extensionAlias = 'prettify_html';

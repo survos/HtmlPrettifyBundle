@@ -1,6 +1,6 @@
 <?php
 
-namespace Tacman\HtmlPrettifyBundle\Twig;
+namespace Survos\HtmlPrettifyBundle\Twig;
 
 use Gajus\Dindent\Indenter;
 use Symfony\Component\OptionsResolver\OptionsResolver;
