@@ -1,5 +1,5 @@
 {
-    "name": "tacman/html-prettify-bundle",
+    "name": "survos/html-prettify-bundle",
     "description": "format HTML",
     "keywords": ["symfony-ux", "symfony6"],
 
@@ -13,15 +13,16 @@
     ],
     "require": {
         "php": "^8.1",
+        "gajus/dindent": "^2.0",
         "symfony/config": "^6.1",
         "symfony/dependency-injection": "^6.1",
         "symfony/http-kernel": "^6.1",
-        "twig/twig": "^3.4",
-        "gajus/dindent": "^2.0"
+        "symfony/options-resolver": "^6.1",
+        "twig/twig": "^2 || ^3.4"
     },
     "autoload": {
         "psr-4": {
-            "Tacman\\HtmlPrettifyBundle\\": "src/"
+            "Survos\\HtmlPrettifyBundle\\": "src/"
         }
     },
     "require-dev": {

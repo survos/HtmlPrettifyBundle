@@ -14,7 +14,7 @@ export default class extends Controller {
     }
 
     connect() {
-        let msg = 'Hello from @tacman/html-prettify: ' + this.identifier;
+        let msg = 'Hello from @survos/html-prettify: ' + this.identifier;
         let html = this.hasSourceTarget ? this.sourceTarget.innerHTML : this.element.innerHTML;
         this.sourceTarget.innerHTML = "\n" + prettify(html) + "\n";
 
