@@ -3,19 +3,18 @@
 namespace Survos\HtmlPrettifyBundle;
 
 use Gajus\Dindent\Indenter;
-use Symfony\Component\DependencyInjection\Definition;
-use Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension;
+use Survos\HtmlPrettifyBundle\Twig\HtmlPrettifyExtension;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Survos\HtmlPrettifyBundle\Twig\HtmlPrettifyExtension;
+use Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension;
 use Twig\Environment;
 
 class HtmlPrettifyBundle extends AbstractBundle
 {
-
     protected string $extensionAlias = 'prettify_html';
 
     // $config is the bundle Configuration that you usually process in ExtensionInterface::load() but already merged and processed
@@ -26,20 +25,20 @@ class HtmlPrettifyBundle extends AbstractBundle
     {
         $builder->autowire('gajus_indenter', Indenter::class)
             ->setPublic(true);
-//        $definition = $builder->autowire('tacman.hello_twig', HelloExtension::class)
-//            ->addTag('twig.extension');
+        //        $definition = $builder->autowire('tacman.hello_twig', HelloExtension::class)
+        //            ->addTag('twig.extension');
 
-            $builder
-                ->setDefinition('survos.html_pretty', new Definition(HtmlPrettifyExtension::class))
+        $builder
+            ->setDefinition('survos.html_pretty', new Definition(HtmlPrettifyExtension::class))
 //                ->addArgument(new Reference('webpack_encore.twig_stimulus_extension'))
 //                ->addArgument(new Reference('gajus_indenter'))
-                ->addTag('twig.extension')
-                ->setPublic(false)
-            ;
+            ->addTag('twig.extension')
+            ->setPublic(false)
+        ;
 
-//        $definition->setArgument('$widthFactor', $config['widthFactor']);
-//        $definition->setArgument('$height', $config['height']);
-//        $definition->setArgument('$foregroundColor', $config['foregroundColor']);
+        //        $definition->setArgument('$widthFactor', $config['widthFactor']);
+        //        $definition->setArgument('$height', $config['height']);
+        //        $definition->setArgument('$foregroundColor', $config['foregroundColor']);
     }
 
     public function configure(DefinitionConfigurator $definition): void
@@ -54,7 +53,4 @@ class HtmlPrettifyBundle extends AbstractBundle
 
         ;
     }
-
-
-
 }
