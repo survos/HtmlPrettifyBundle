@@ -1,7 +1,10 @@
 {
     "name": "survos/html-prettify-bundle",
     "description": "format HTML",
-    "keywords": ["symfony-ux", "symfony6"],
+    "keywords": [
+        "symfony-ux",
+        "symfony6"
+    ],
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
