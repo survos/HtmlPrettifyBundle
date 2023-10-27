@@ -3,6 +3,7 @@
 namespace Survos\HtmlPrettifyBundle;
 
 use Gajus\Dindent\Indenter;
+use Survos\CoreBundle\HasAssetMapperInterface;
 use Survos\CoreBundle\Traits\HasAssetMapperTrait;
 use Survos\HtmlPrettifyBundle\Twig\HtmlPrettifyExtension;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
@@ -14,7 +15,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension;
 use Twig\Environment;
 
-class HtmlPrettifyBundle extends AbstractBundle
+class HtmlPrettifyBundle extends AbstractBundle implements HasAssetMapperInterface
 {
     use HasAssetMapperTrait;
     protected string $extensionAlias = 'prettify_html';
@@ -50,4 +51,13 @@ class HtmlPrettifyBundle extends AbstractBundle
 
         ;
     }
+
+    public function getPaths(): array
+    {
+        $dir = realpath(__DIR__.'/../assets/');
+        assert(file_exists($dir), 'asset path must exist for the assets in ' . __DIR__);
+        return [$dir => '@survos/html-prettyify'];
+    }
+
+
 }
