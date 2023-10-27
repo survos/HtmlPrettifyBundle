@@ -11,6 +11,12 @@
         "fetch": "eager",
         "enabled": true
       }
+    },
+    "importmap": {
+      "html-prettify": "^1.0.7"
+    },
+    "autoimport": {
+      "html-prettify": true
     }
   },
   "peerDependencies": {

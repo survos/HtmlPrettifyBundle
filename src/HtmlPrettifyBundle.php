@@ -3,6 +3,7 @@
 namespace Survos\HtmlPrettifyBundle;
 
 use Gajus\Dindent\Indenter;
+use Survos\CoreBundle\Traits\HasAssetMapperTrait;
 use Survos\HtmlPrettifyBundle\Twig\HtmlPrettifyExtension;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,6 +16,7 @@ use Twig\Environment;
 
 class HtmlPrettifyBundle extends AbstractBundle
 {
+    use HasAssetMapperTrait;
     protected string $extensionAlias = 'prettify_html';
 
     // $config is the bundle Configuration that you usually process in ExtensionInterface::load() but already merged and processed
@@ -25,8 +27,6 @@ class HtmlPrettifyBundle extends AbstractBundle
     {
         $builder->autowire('gajus_indenter', Indenter::class)
             ->setPublic(true);
-        //        $definition = $builder->autowire('tacman.hello_twig', HelloExtension::class)
-        //            ->addTag('twig.extension');
 
         $builder
             ->setDefinition('survos.html_pretty', new Definition(HtmlPrettifyExtension::class))
@@ -36,9 +36,6 @@ class HtmlPrettifyBundle extends AbstractBundle
             ->setPublic(false)
         ;
 
-        //        $definition->setArgument('$widthFactor', $config['widthFactor']);
-        //        $definition->setArgument('$height', $config['height']);
-        //        $definition->setArgument('$foregroundColor', $config['foregroundColor']);
     }
 
     public function configure(DefinitionConfigurator $definition): void

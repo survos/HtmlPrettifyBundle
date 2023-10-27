@@ -1,6 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-const prettify = require('html-prettify');
-
+import prettify from 'html-prettify';
 /*
 * The following line makes this controller "lazy": it won't be downloaded until needed
 * See https://github.com/symfony/stimulus-bridge#lazy-controllers
