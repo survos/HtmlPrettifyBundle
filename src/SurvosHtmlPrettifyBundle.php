@@ -13,15 +13,12 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Symfony\WebpackEncoreBundle\Twig\StimulusTwigExtension;
 use Twig\Environment;
 
 class SurvosHtmlPrettifyBundle extends AbstractBundle implements HasAssetMapperInterface
 {
     use HasAssetMapperTrait;
-    //    protected string $extensionAlias = 'prettify_html';
-
-    // $config is the bundle Configuration that you usually process in ExtensionInterface::load() but already merged and processed
+//        protected string $extensionAlias = 'prettify_html';
 
     /**
      * @param array<mixed> $config
